@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0 0;
+            padding: 0 0;
+        }
+        .header{
+/*            width: 1500px;*/
+            text-align: center;
+            height: 65px;
+            border-bottom: 1px solid rgba(30,35,42,.06);
+            margin: 0 auto;
+        }
+        .header .inner{
+/*            background-color: antiquewhite;*/
+            width: 800px;
+            height: 65px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .header .inner .logo{
+            float: left;
+            margin-right: 40px;
+        }
+        .header .inner .item{
+            float: left;
+            margin-right: 40px;
+        }
+        .header .inner .item ul{
+            list-style: none;
+        }
+        .header .inner .item ul li{
+            float: left;
+            width: 80px;
+            line-height: 65px;
+            text-align: center;
+/*            border-left: 1px solid rgba(30,35,42,.06);*/
+        }
+        .header .inner .item ul li a{
+            font-size: 25px;
+            display: block;/*转为块级元素才能设置高度*/
+			height: 65px;
+			color:black;
+			text-decoration: none;
+        }
+        .header .inner .item ul li a:hover{
+            background: black;
+            color: white;
+        }
+        .header .inner .search{
+            float: left;
+            line-height: 65px;
+        
+        }
+        
+        .center{
+            background: url('img/beauty.jpg') no-repeat center;
+            height: 600px;
+        }
+        
+        
+        .footer {
+            width: 1500px;
+            margin-top: 50px;
+        }
+        .footer ul{
+            list-style: none;
+        }
+        .footer ul li{
+            width: 300px;
+            height: 250px;
+            float: left;
+            text-align: center;
+            margin-right: 100px;
+        }
+        .footer ul li img{
+            width: 300px;
+            height: 200px;
+        }
+        .footer ul li.last{
+            margin-right: 0px;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="header">
+      
+        <div class="inner">
+          
+            <!--<div class="logo">-->
+                <!--<img src="img/zhihu.png" alt="">-->
+            <!--</div>-->
+            
+            <div class="item">
+                <ul>
+                    <li><a href="">love</a></li>
+                    <li><a href="">you</a></li>
+                    <li><a href="">for</a></li>
+                    <li><a href="">ever</a></li>
+                    <li><a href="">love</a></li>
+                </ul>
+            </div>
+            
+            <!--<div class="search">-->
+                <!--<input type="text">-->
+            <!--</div>-->
+       </div>
+    </div>
+    
+    <div class="center">
+        
+    </div>
+    
+    <div class="footer">
+        <div class="inner">
+            <ul>
+            <li>
+                <p><img src="img/android.png" alt=""></p>
+                <h4>安卓</h4>    <!--用hx或者p标签等块级元素让文字另占一行-->
+            </li>
+            <li>
+                <p><img src="img/ios.png" alt=""></p>
+                <h4>ios</h4>
+            </li>
+            <li>
+                <p><img src="img/go.png" alt=""></p>
+                <h4>go</h4>
+            </li>
+            <li class="last">
+                <p><img src="img/weixin.png" alt=""></p>
+                <h4>微信</h4>
+            </li>
+        </ul>
+        </div>
+    </div>
+</body>
+</html>
