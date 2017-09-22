@@ -1,40 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Document</title>
     <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript">
-        $(function(){
-//            alert(1)
-        });
-    </script>
+    window.onload=function () {
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + "px";
+        window.addEventListener("resize",function(){
+            document.documentElement.style.fontSize = 50 + "px";
+        },false);
+        console.log( document.documentElement.style.fontSize);
+    }
+</script>
+    <!--<script type="text/javascript">-->
+
+        <!--$(function(){-->
+            <!--var scW = screen.width;-->
+            <!--var scH = screen.height;-->
+            <!--var contentW = $("#content").width();-->
+            <!--var width = (scW-contentW)/2;-->
+            <!--$("#content").css("left",width);-->
+        <!--});-->
+    <!--</script>-->
     <style type="text/css">
-        .parent{
-            /*float: left;*/
-            font-size: 20px;
-            /*line-height: 150%;*/
-            width: 200px;
-            line-height: 50px;
-            /*height: 200px;*/
-            /*position: relative;*/
-            background-color: #97ffa4;
+        *{
+            padding: 0;
+            margin: 0;
         }
-        .child{
-            /*position: absolute;*/
-            width: 100px;
-            height: 50px;
-            /*top: 0px;*/
-            /*left: 0px;*/
-            background-color: #ff5cfb;
+
+        #bg{
+            position: relative;
+        }
+
+        #bg img{
+            width: 100%;
+        }
+
+        #content{
+            font: normal 14px/14px "SimSun", "宋体";
+            color: white;
+            border: 0px solid white;
+            position: absolute;
+            /*background: #4ab687;*/
+            bottom: 285px;
+            left: 20px;
+
+            text-align: center;
+        }
+        #content p{
+            margin: 10px;
+            vertical-align: middle;
+        }
+        #content p input{
+            color: white;
+            height: 20px;
+            width: 150px;
+            border: 1px solid red;
+            background: black;
+        }
+        #content button{
+            font-size:24px;
+            font-weight: 600;
+            vertical-align: middle;
+            margin: 0 auto;
+            height: 30px;
+            line-height: 30px;
+            color: #63cdff;
+            background-color: black;
+            border: 0px;
+            display: inline;
+            text-align: center;
+        }
+        #content .button{
+            line-height: 30px;
+            font-weight: 800;
         }
     </style>
 </head>
 <body>
-    <div class="parent">
-        a
-        <div class="child"> </div>
+<div id="bg">
+    <img src="img/market.jpg" alt="">
+    <div id="content">
+        <p>姓名&nbsp;<input type="text" name="姓名"/></p>
+        <p>电话&nbsp;<input type="text" name="号码"/></p>
+        <div class="button">
+            <button>确 定</button>
+        </div>
     </div>
+</div>
 </body>
 </html>
 
