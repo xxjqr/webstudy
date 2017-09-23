@@ -6,24 +6,25 @@
     <title>Document</title>
     <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript">
-    window.onload=function () {
-        document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + "px";
-        window.addEventListener("resize",function(){
-            document.documentElement.style.fontSize = 50 + "px";
-        },false);
-        console.log( document.documentElement.style.fontSize);
-    }
+//    window.onload=function () {
+//        document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + "px";
+//        window.addEventListener("resize",function(){
+//            document.documentElement.style.fontSize = 50 + "px";
+//        },false);
+//        console.log( document.documentElement.style.fontSize);
+//    }
 </script>
-    <!--<script type="text/javascript">-->
+    <script type="text/javascript">
 
-        <!--$(function(){-->
-            <!--var scW = screen.width;-->
-            <!--var scH = screen.height;-->
-            <!--var contentW = $("#content").width();-->
-            <!--var width = (scW-contentW)/2;-->
-            <!--$("#content").css("left",width);-->
-        <!--});-->
-    <!--</script>-->
+        $(function(){
+            var scW = screen.width;
+            var scH = screen.height;
+            var contentW = $("#content").width();
+            var width = (scW-contentW)/2;
+            var cssfontSize=$("#content").css('font-size'); // 获取字体大小
+            $("#content").css("left",width);
+        });
+    </script>
     <style type="text/css">
         *{
             padding: 0;
@@ -31,23 +32,26 @@
         }
 
         #bg{
-            position: relative;
+            background-color: black;
+            font: normal 14px/14px "SimSun", "宋体";
+        }
+
+        #content{
+            color: white;
+            border: 0px solid white;
+            position: absolute;
+            /*background: #4ab687;*/
+            bottom: 10%;
+            left: 20px;
+
+            text-align: center;
         }
 
         #bg img{
             width: 100%;
         }
-
-        #content{
-            font: normal 14px/14px "SimSun", "宋体";
-            color: white;
-            border: 0px solid white;
-            position: absolute;
-            /*background: #4ab687;*/
-            bottom: 285px;
-            left: 20px;
-
-            text-align: center;
+        #bg .market_center{
+            position: relative;
         }
         #content p{
             margin: 10px;
@@ -55,14 +59,33 @@
         }
         #content p input{
             color: white;
-            height: 20px;
+            height: 25px;
+            padding-left: 10px;
             width: 150px;
             border: 1px solid red;
             background: black;
         }
-        #content button{
+
+        #content .confirm{
+            margin: 0 auto;
+            margin-top: 20px;
+            height: 30px;
+            width: 195px;
+        }
+
+        #content .confirm .line{
+            width: 50px;
+            height: 1px;
+            margin: 0 10px;
+            background-color: #63cdff;
+            display: block;
+            float: left;
+            margin-top: 15px;
+        }
+
+        #content .confirm button{
             font-size:24px;
-            font-weight: 600;
+            font-weight: 500;
             vertical-align: middle;
             margin: 0 auto;
             height: 30px;
@@ -70,25 +93,28 @@
             color: #63cdff;
             background-color: black;
             border: 0px;
-            display: inline;
+            float: left;
             text-align: center;
         }
-        #content .button{
-            line-height: 30px;
-            font-weight: 800;
-        }
+
     </style>
 </head>
 <body>
 <div id="bg">
-    <img src="img/market.jpg" alt="">
-    <div id="content">
-        <p>姓名&nbsp;<input type="text" name="姓名"/></p>
-        <p>电话&nbsp;<input type="text" name="号码"/></p>
-        <div class="button">
-            <button>确 定</button>
+    <img src="img/market/market_head.jpg" alt="">
+    <div class="market_center">
+        <img src="img/market/market_join.jpg" alt="">
+        <div id="content">
+            <p>姓名&nbsp;<input type="text" name="name"/></p>
+            <p>电话&nbsp;<input type="text" name="phone"/></p>
+            <div class="confirm">
+                <span class="line"></span>
+                <button>确 定</button>
+                <span class="line"></span>
+            </div>
         </div>
     </div>
+    <img src="img/market/market_footer.jpg" alt="">
 </div>
 </body>
 </html>
