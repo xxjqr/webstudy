@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" name="viewport" content="user-scalable=no"/>
+    <!--<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>-->
+    <title>market</title>
+
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        img{
+            width: 100%;
+        }
+
+        #bg{
+            float: left;
+            background-color: black;
+        }
+
+        #market_center{
+            position: relative;
+        }
+
+        #content{
+
+            color: white;
+            position: absolute;
+            text-align: center;
+            width: 70%;
+            height: 54%;
+            left: 15%;
+            bottom: 10%;
+        }
+
+        #content p{
+            font-size: 2rem;
+            line-height: 6rem;
+            /*margin: 10px;*/
+            height: 30%;
+            vertical-align: middle;
+            padding: 0;
+        }
+        #content p input{
+            color: white;
+            width: 65%;
+            height: 80%;
+            padding-left: 10px;
+            border: 1px solid red;
+            background: black;
+            font-size: 2rem;
+            vertical-align: middle;
+        }
+
+        #confirm{
+            margin: 0 auto;
+            /*padding-top: 7%;*/
+        }
+
+        #confirm .line{
+            height: 1px;
+            background-color: #63cdff;
+            display: block;
+            float: left;
+        }
+
+        #confirm button{
+            font-size:3.3rem;
+            font-weight: 600;
+            vertical-align: middle;
+            color: #63cdff;
+            background-color: black;
+            border: 0px;
+            float: left;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="bg">
+    <img src="../img/market/market_head.jpg" alt=""/>
+    <div id="market_center">
+        <img src="../img/market/market_join.jpg" alt=""/>
+        <form id="content">
+            <p>姓名&nbsp;&nbsp;&nbsp;&nbsp;<input id="name" type="text" name="name" required="required"/></p>
+            <p>电话&nbsp;&nbsp;&nbsp;&nbsp;<input id="phone" type="text" name="phone" required="required" pattern="^1[3|4|5|7|8]\d{9}"/></p>
+            <div id="confirm">
+                <span class="line"></span>
+                <button type="submit" onclick="ajaxRequest()">确 定</button>
+                <span class="line"></span>
+            </div>
+        </form>
+    </div>
+    <img src="../img/market/market_footer.jpg" alt=""/>
+</div>
+
+<script type="application/javascript">
+
+    //<![CDATA[
+    window.onload = function () {
+        var contentW = document.getElementById("content").offsetWidth;
+        var contentH = document.getElementById("content").offsetHeight;
+        var buttonH = document.getElementsByTagName("button")[0].offsetHeight;
+
+        //设置横线的宽度
+        for(var i=0;i<document.getElementsByClassName("line").length;i++){
+            document.getElementsByClassName("line")[i].style.width=(0.2*contentW)+"px";
+            //设置横线margin
+            document.getElementsByClassName("line")[i].style.marginTop=buttonH/2+"px";
+        }
+
+        var pH = 0;
+        for(var i=0;i<document.getElementsByTagName("p").length;i++){
+            pH+=document.getElementsByTagName("p")[i].offsetHeight;
+        }
+
+        //
+        document.getElementById("confirm").style.marginTop = (contentH-pH-buttonH)+"px";
+
+
+        //设置按钮的宽度
+        document.getElementsByTagName("button")[0].style.width=(0.3*contentW)+"px";
+
+        //设置confirm宽度
+        document.getElementById("confirm").style.width = (0.3*contentW+(0.2*contentW*2))+"px";
+
+        //关闭图片点击事件
+        for(var i=0;i<document.getElementsByTagName("img").length;i++){
+            document.getElementsByTagName("img")[i].onclick = function(){
+            }
+        }
+
+    }
+    //]]>
+
+
+    var xmlHttpRequest = new XMLHttpRequest();
+    function ajaxRequest()
+    {
+        if(null != xmlHttpRequest)
+        {
+
+            var name = document.getElementById("name").value;
+            var phone = document.getElementById("phone").value;
+            if (name=="" || phone==""){
+//                alert("信息输入不完整");
+                return;
+            }
+//
+            if (!validPhone(phone)){
+//                alert("手机号格式不正确");
+                return;
+            }
+
+            xmlHttpRequest.open("POST", "apply", true);
+
+            // 当发生状态变化时就调用这个回调函数
+            xmlHttpRequest.onreadystatechange = ajaxCallBack;
+
+
+            // 使用post提交时必须加上下面这行代码
+            xmlHttpRequest.setRequestHeader("Content-Type"," application/json;charset=utf-8");
+
+
+            var json = "{\"name\":"+"\""+name+"\""+",\"phone\":"+"\""+phone+"\""+"}";
+            // 向服务器发出一个请求
+            xmlHttpRequest.send(json);
+        }
+    }
+
+    function validPhone(phone) {
+        var phoneNumReg = /^1[3|4|5|7|8]\d{9}$/
+        <!--表示以1开头，第二位可能是3/4/5/7/8等的任意一个，在加上后面的\d表示数字[0-9]的9位，总共加起来11位结束。-->
+        if(!phoneNumReg.test(phone)) {
+            return false;
+        }
+        return true;
+    }
+
+    function ajaxCallBack()
+    {
+        var content = xmlHttpRequest.responseText;
+        if(xmlHttpRequest.readyState == 4)
+        {
+            if(xmlHttpRequest.status == 200)
+            {
+                var content = xmlHttpRequest.responseText;
+                var response = JSON.parse(content);
+                alert(response.msg);
+            }
+        }
+    }
+</script>
+</body>
+</html>
